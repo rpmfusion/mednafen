@@ -1,12 +1,11 @@
 Name:           mednafen
-Version:        0.8.7
+Version:        0.8.9
 Release:        1%{?dist}
 Summary:        A multi-system emulator utilizing OpenGL and SDL
 Group:          Applications/Emulators
 License:        GPLv2+
 URL:            http://mednafen.sourceforge.net
 Source0:        http://downloads.sourceforge.net/%{name}/%{name}-%{version}.tar.bz2
-Patch0:         mednafen-0.7.1-norpath.patch
 BuildRoot:      %{_tmppath}/%{name}-%{version}-%{release}-root-%(%{__id_u} -n)
 BuildRequires:  gettext
 BuildRequires:  pkgconfig >= 0.9.0
@@ -40,15 +39,12 @@ reasons.
 
 %prep
 %setup -q -n %{name}
-%patch0 -p1
 
 # Permission cleanups for debuginfo
 chmod -x src/wswan/dis/*
 
 
 %build
-# Note --disable-rpath seems to get ignored, at least on x86_64 so we rely on
-# the patch aswell.
 %configure --disable-rpath
 make %{?_smp_mflags}
 
@@ -70,6 +66,10 @@ rm -rf %{buildroot}
 
 
 %changelog
+* Sat Sep 20 2008 Julian Sikorski <belegdol[at]gmail[dot]com> - 0.8.9-1
+- Updated to 0.8.9
+- Dropped the rpath patch, does not seem to be necessary
+
 * Tue Jan 08 2008 Ian Chapman <packages[AT]amiga-hardware.com> 0.8.7-1
 - Upgrade to 0.8.7
 
