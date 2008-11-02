@@ -1,12 +1,14 @@
+%define _version 0.8.A
+
 Name:           mednafen
-Version:        0.8.9
-Release:        1%{?dist}
+Version:        0.8.10
+Release:        1.%{_version}%{?dist}
 Summary:        A multi-system emulator utilizing OpenGL and SDL
 Group:          Applications/Emulators
 License:        GPLv2+
 URL:            http://mednafen.sourceforge.net
-Source0:        http://downloads.sourceforge.net/%{name}/%{name}-%{version}.tar.bz2
-BuildRoot:      %{_tmppath}/%{name}-%{version}-%{release}-root-%(%{__id_u} -n)
+Source0:        http://downloads.sourceforge.net/%{name}/%{name}-%{_version}.tar.bz2
+BuildRoot:      %{_tmppath}/%{name}-%{_version}-%{release}-root-%(%{__id_u} -n)
 BuildRequires:  gettext
 BuildRequires:  pkgconfig >= 0.9.0
 BuildRequires:  SDL_net-devel >= 1.2.0
@@ -66,6 +68,9 @@ rm -rf %{buildroot}
 
 
 %changelog
+* Sun Nov  2 2008 Julian Sikorski <belegdol[at]gmail[dot]com> - 0.8.10-1.0.8.A
+- Updated to 0.8.A
+
 * Sat Sep 20 2008 Julian Sikorski <belegdol[at]gmail[dot]com> - 0.8.9-1
 - Updated to 0.8.9
 - Dropped the rpath patch, does not seem to be necessary
