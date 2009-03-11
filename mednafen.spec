@@ -1,7 +1,7 @@
-%define _version 0.8.A
+%define _version 0.8.B
 
 Name:           mednafen
-Version:        0.8.10
+Version:        0.8.11
 Release:        1.%{_version}%{?dist}
 Summary:        A multi-system emulator utilizing OpenGL and SDL
 Group:          Applications/Emulators
@@ -68,6 +68,12 @@ rm -rf %{buildroot}
 
 
 %changelog
+* Sun Mar 08 2009 Julian Sikorski <belegdol[at]gmail[dot]com> - 0.8.11-1.0.8.B
+- Updated to 0.8.B
+
+* Thu Nov  6 2008 Julian Sikorski <belegdol[at]gmail[dot]com> - 0.8.10-2.0.8.A
+- Rebuilt. Something has mangled the x86_64 rpm
+
 * Sun Nov  2 2008 Julian Sikorski <belegdol[at]gmail[dot]com> - 0.8.10-1.0.8.A
 - Updated to 0.8.A
 
