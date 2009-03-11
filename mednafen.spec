@@ -1,13 +1,14 @@
-%define _version 0.8.A
+%define _version 0.8.B
 
 Name:           mednafen
-Version:        0.8.10
-Release:        2.%{_version}%{?dist}
+Version:        0.8.11
+Release:        1.%{_version}%{?dist}
 Summary:        A multi-system emulator utilizing OpenGL and SDL
 Group:          Applications/Emulators
 License:        GPLv2+
 URL:            http://mednafen.sourceforge.net
 Source0:        http://downloads.sourceforge.net/%{name}/%{name}-%{_version}.tar.bz2
+Patch0:         mednafen-0.8.B-gcc44.patch
 BuildRoot:      %{_tmppath}/%{name}-%{_version}-%{release}-root-%(%{__id_u} -n)
 BuildRequires:  gettext
 BuildRequires:  pkgconfig >= 0.9.0
@@ -41,6 +42,7 @@ reasons.
 
 %prep
 %setup -q -n %{name}
+%patch0 -p0 -b .gcc44
 
 # Permission cleanups for debuginfo
 chmod -x src/wswan/dis/*
@@ -68,6 +70,9 @@ rm -rf %{buildroot}
 
 
 %changelog
+* Sun Mar 08 2009 Julian Sikorski <belegdol[at]gmail[dot]com> - 0.8.11-1.0.8.B
+- Updated to 0.8.B
+
 * Thu Nov  6 2008 Julian Sikorski <belegdol[at]gmail[dot]com> - 0.8.10-2.0.8.A
 - Rebuilt. Something has mangled the x86_64 rpm
 
