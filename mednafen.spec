@@ -2,7 +2,7 @@
 
 Name:           mednafen
 Version:        0.8.11
-Release:        1.%{_version}%{?dist}
+Release:        2.%{_version}%{?dist}
 Summary:        A multi-system emulator utilizing OpenGL and SDL
 Group:          Applications/Emulators
 License:        GPLv2+
@@ -74,6 +74,9 @@ rm -rf %{buildroot}
 
 
 %changelog
+* Sun Mar 29 2009 Thorsten Leemhuis <fedora [AT] leemhuis [DOT] info> - 0.8.11-2.0.8.B
+- rebuild for new F11 features
+
 * Sun Mar 08 2009 Julian Sikorski <belegdol[at]gmail[dot]com> - 0.8.11-1.0.8.B
 - Updated to 0.8.B
 - ExcludeArch: ppc64 on Fedora 11+
