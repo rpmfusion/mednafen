@@ -1,14 +1,13 @@
-%define _version 0.8.B
+%define _version 0.8.C
 
 Name:           mednafen
-Version:        0.8.11
-Release:        2.%{_version}%{?dist}
+Version:        0.8.12
+Release:        1.%{_version}%{?dist}
 Summary:        A multi-system emulator utilizing OpenGL and SDL
 Group:          Applications/Emulators
 License:        GPLv2+
 URL:            http://mednafen.sourceforge.net
 Source0:        http://downloads.sourceforge.net/%{name}/%{name}-%{_version}.tar.bz2
-Patch0:         mednafen-0.8.B-gcc44.patch
 BuildRoot:      %{_tmppath}/%{name}-%{_version}-%{release}-root-%(%{__id_u} -n)
 BuildRequires:  gettext
 BuildRequires:  pkgconfig >= 0.9.0
@@ -18,10 +17,6 @@ BuildRequires:  libcdio-devel
 BuildRequires:  libGLU-devel
 BuildRequires:  zlib-devel
 BuildRequires:  jack-audio-connection-kit-devel
-
-%if 0%{?fedora} >= 11
-ExcludeArch:    ppc64
-%endif
 
 %description
 A portable command-line driven, multi-system emulator which uses OpenGL and
@@ -46,7 +41,6 @@ reasons.
 
 %prep
 %setup -q -n %{name}
-%patch0 -p0 -b .gcc44
 
 # Permission cleanups for debuginfo
 chmod -x src/wswan/dis/*
@@ -74,6 +68,11 @@ rm -rf %{buildroot}
 
 
 %changelog
+* Thu Jul 09 2009 Julian Sikorski <belegdol[at]gmail[dot]com> - 0.8.12-1.0.8.C
+- Updated to 0.8.C
+- Dropped the upstreamed gcc44 patch
+- Dropped the ppc64 ExcludeArch
+
 * Sun Mar 29 2009 Thorsten Leemhuis <fedora [AT] leemhuis [DOT] info> - 0.8.11-2.0.8.B
 - rebuild for new F11 features
 
