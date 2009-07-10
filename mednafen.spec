@@ -1,7 +1,7 @@
-%define _version 0.8.B
+%define _version 0.8.C
 
 Name:           mednafen
-Version:        0.8.11
+Version:        0.8.12
 Release:        1.%{_version}%{?dist}
 Summary:        A multi-system emulator utilizing OpenGL and SDL
 Group:          Applications/Emulators
@@ -17,6 +17,10 @@ BuildRequires:  libcdio-devel
 BuildRequires:  libGLU-devel
 BuildRequires:  zlib-devel
 BuildRequires:  jack-audio-connection-kit-devel
+
+%if 0%{?fedora} >= 11
+ExcludeArch:    ppc64
+%endif
 
 %description
 A portable command-line driven, multi-system emulator which uses OpenGL and
@@ -68,8 +72,16 @@ rm -rf %{buildroot}
 
 
 %changelog
+* Thu Jul 09 2009 Julian Sikorski <belegdol[at]gmail[dot]com> - 0.8.12-1.0.8.C
+- Updated to 0.8.C
+- Dropped the upstreamed gcc44 patch
+
+* Sun Mar 29 2009 Thorsten Leemhuis <fedora [AT] leemhuis [DOT] info> - 0.8.11-2.0.8.B
+- rebuild for new F11 features
+
 * Sun Mar 08 2009 Julian Sikorski <belegdol[at]gmail[dot]com> - 0.8.11-1.0.8.B
 - Updated to 0.8.B
+- ExcludeArch: ppc64 on Fedora 11+
 
 * Thu Nov  6 2008 Julian Sikorski <belegdol[at]gmail[dot]com> - 0.8.10-2.0.8.A
 - Rebuilt. Something has mangled the x86_64 rpm
