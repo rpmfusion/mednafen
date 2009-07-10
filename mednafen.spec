@@ -18,6 +18,10 @@ BuildRequires:  libGLU-devel
 BuildRequires:  zlib-devel
 BuildRequires:  jack-audio-connection-kit-devel
 
+%if 0%{?fedora} >= 11
+ExcludeArch:    ppc64
+%endif
+
 %description
 A portable command-line driven, multi-system emulator which uses OpenGL and
 SDL. It emulates the following:
@@ -71,7 +75,6 @@ rm -rf %{buildroot}
 * Thu Jul 09 2009 Julian Sikorski <belegdol[at]gmail[dot]com> - 0.8.12-1.0.8.C
 - Updated to 0.8.C
 - Dropped the upstreamed gcc44 patch
-- Dropped the ppc64 ExcludeArch
 
 * Sun Mar 29 2009 Thorsten Leemhuis <fedora [AT] leemhuis [DOT] info> - 0.8.11-2.0.8.B
 - rebuild for new F11 features
