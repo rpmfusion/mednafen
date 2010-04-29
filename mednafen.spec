@@ -2,7 +2,7 @@
 
 Name:           mednafen
 Version:        0.8.12
-Release:        1.%{_version}%{?dist}
+Release:        2.%{_version}%{?dist}
 Summary:        A multi-system emulator utilizing OpenGL and SDL
 Group:          Applications/Emulators
 License:        GPLv2+
@@ -72,6 +72,9 @@ rm -rf %{buildroot}
 
 
 %changelog
+* Thu Apr 29 2010 Julian Sikorski <belegdol@fedoraproject.org> - 0.8.12-2.0.8.C
+- Rebuilt for new libcdio
+
 * Thu Jul 09 2009 Julian Sikorski <belegdol[at]gmail[dot]com> - 0.8.12-1.0.8.C
 - Updated to 0.8.C
 - Dropped the upstreamed gcc44 patch
