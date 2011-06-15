@@ -1,13 +1,13 @@
-%define _version 0.8.C
-
 Name:           mednafen
-Version:        0.8.12
-Release:        2.%{_version}%{?dist}
+Version:        0.9.17
+Release:        0.1%{?dist}
 Summary:        A multi-system emulator utilizing OpenGL and SDL
 Group:          Applications/Emulators
-License:        GPLv2+
+#mednafen is a monstrosity build out of many emulators hence the colourful licensing
+License:        GPLv2+ and BSD and ISC and LGPLv2+ and MIT and zlib 
 URL:            http://mednafen.sourceforge.net
-Source0:        http://downloads.sourceforge.net/%{name}/%{name}-%{_version}.tar.bz2
+#Get it here: http://forum.fobby.net/index.php?t=thread&frm_id=4
+Source0:        %{name}-%{version}-wip.tar.bz2
 BuildRoot:      %{_tmppath}/%{name}-%{_version}-%{release}-root-%(%{__id_u} -n)
 BuildRequires:  gettext
 BuildRequires:  pkgconfig >= 0.9.0
@@ -17,10 +17,6 @@ BuildRequires:  libcdio-devel
 BuildRequires:  libGLU-devel
 BuildRequires:  zlib-devel
 BuildRequires:  jack-audio-connection-kit-devel
-
-%if 0%{?fedora} >= 11
-ExcludeArch:    ppc64
-%endif
 
 %description
 A portable command-line driven, multi-system emulator which uses OpenGL and
@@ -35,6 +31,10 @@ SDL. It emulates the following:
 * TurboGrafx 16 (CD)
 * SuperGrafx
 * PC-FX
+* WonderSwan (Color)
+* Sega Genesis
+* Nintendo Virtual Boy
+* Super NES
 Mednafen has the ability to remap hotkey functions and virtual system
 inputs to a keyboard, a joystick or both simultaneously. Save states are
 supported, as is real-time game rewinding. Screen snapshots may be taken at the
@@ -47,7 +47,7 @@ reasons.
 %setup -q -n %{name}
 
 # Permission cleanups for debuginfo
-chmod -x src/wswan/dis/*
+find \( -name \*.c\* -or -name \*.h\* \) -exec chmod -x {} \;
 
 
 %build
@@ -58,6 +58,11 @@ make %{?_smp_mflags}
 %install
 rm -rf %{buildroot}
 make install DESTDIR=%{buildroot}
+
+# Documentation cleanup
+rm -rf Documentation/*.def Documentation/*.php Documentation/generate.sh \
+    Documentation/Makefile.* Documentation/docgen.inc
+
 %find_lang %{name}
 
 
@@ -68,10 +73,15 @@ rm -rf %{buildroot}
 %files -f %{name}.lang
 %defattr(-,root,root,-)
 %{_bindir}/%{name}
+%{_datadir}/%{name}
 %doc AUTHORS ChangeLog COPYING TODO Documentation/*
 
 
 %changelog
+* Wed Jun 15 2011 Julian Sikorski <belegdol@fedoraproject.org> - 0.9.17-0.1
+- Updated to 0.9.17-WIP
+- Updated the License tag
+
 * Thu Apr 29 2010 Julian Sikorski <belegdol@fedoraproject.org> - 0.8.12-2.0.8.C
 - Rebuilt for new libcdio
 
