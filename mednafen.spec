@@ -1,6 +1,6 @@
 Name:           mednafen
-Version:        0.9.17
-Release:        0.2%{?dist}
+Version:        0.9.18
+Release:        0.1%{?dist}
 Summary:        A multi-system emulator utilizing OpenGL and SDL
 Group:          Applications/Emulators
 #mednafen is a monstrosity build out of many emulators hence the colourful licensing
@@ -8,7 +8,6 @@ License:        GPLv2+ and BSD and ISC and LGPLv2+ and MIT and zlib
 URL:            http://mednafen.sourceforge.net
 #Get it here: http://forum.fobby.net/index.php?t=thread&frm_id=4
 Source0:        %{name}-%{version}-wip.tar.bz2
-Patch0:		%{name}-nessound.patch
 BuildRoot:      %{_tmppath}/%{name}-%{_version}-%{release}-root-%(%{__id_u} -n)
 BuildRequires:  gettext
 BuildRequires:  pkgconfig >= 0.9.0
@@ -46,7 +45,6 @@ reasons.
 
 %prep
 %setup -q -n %{name}
-%patch0 -p1 -b .nessound
 
 # Permission cleanups for debuginfo
 find \( -name \*.c\* -or -name \*.h\* \) -exec chmod -x {} \;
@@ -80,6 +78,10 @@ rm -rf %{buildroot}
 
 
 %changelog
+* Sun Nov 27 2011 Julian Sikorski <belegdol@fedoraproject.org> - 0.9.18-0.1
+- Updated to 0.9.18-WIP
+- Dropped the NES sound patch
+
 * Sat Aug 27 2011 Julian Weissgerber <sloevenh1@googlemail.com> - 0.9.17-0.2
 - Patch to fix segfault when NES sound is enabled
 
