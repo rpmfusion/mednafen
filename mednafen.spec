@@ -1,6 +1,6 @@
 Name:           mednafen
 Version:        0.9.18
-Release:        0.1%{?dist}
+Release:        0.2%{?dist}
 Summary:        A multi-system emulator utilizing OpenGL and SDL
 Group:          Applications/Emulators
 #mednafen is a monstrosity build out of many emulators hence the colourful licensing
@@ -78,6 +78,9 @@ rm -rf %{buildroot}
 
 
 %changelog
+* Thu Feb 09 2012 Nicolas Chauvet <kwizart@gmail.com> - 0.9.18-0.2
+- Rebuilt for https://fedoraproject.org/wiki/Fedora_17_Mass_Rebuild
+
 * Sun Nov 27 2011 Julian Sikorski <belegdol@fedoraproject.org> - 0.9.18-0.1
 - Updated to 0.9.18-WIP
 - Dropped the NES sound patch
