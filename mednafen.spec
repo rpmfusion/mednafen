@@ -1,14 +1,13 @@
 Name:           mednafen
-Version:        0.9.18
-Release:        0.2%{?dist}
+Version:        0.9.19
+Release:        0.1%{?dist}
 Summary:        A multi-system emulator utilizing OpenGL and SDL
-Group:          Applications/Emulators
 #mednafen is a monstrosity build out of many emulators hence the colourful licensing
 License:        GPLv2+ and BSD and ISC and LGPLv2+ and MIT and zlib 
 URL:            http://mednafen.sourceforge.net
 #Get it here: http://forum.fobby.net/index.php?t=thread&frm_id=4
 Source0:        %{name}-%{version}-wip.tar.bz2
-BuildRoot:      %{_tmppath}/%{name}-%{_version}-%{release}-root-%(%{__id_u} -n)
+Patch0:         %{name}-%{version}-gcc47.patch
 BuildRequires:  gettext
 BuildRequires:  pkgconfig >= 0.9.0
 BuildRequires:  SDL_net-devel >= 1.2.0
@@ -32,9 +31,11 @@ SDL. It emulates the following:
 * SuperGrafx
 * PC-FX
 * WonderSwan (Color)
+* Sega Master System
 * Sega Genesis
 * Nintendo Virtual Boy
 * Super NES
+* Sony PlayStation
 Mednafen has the ability to remap hotkey functions and virtual system
 inputs to a keyboard, a joystick or both simultaneously. Save states are
 supported, as is real-time game rewinding. Screen snapshots may be taken at the
@@ -45,6 +46,7 @@ reasons.
 
 %prep
 %setup -q -n %{name}
+%patch0 -p1 -b .gcc47
 
 # Permission cleanups for debuginfo
 find \( -name \*.c\* -or -name \*.h\* \) -exec chmod -x {} \;
@@ -66,18 +68,18 @@ rm -rf Documentation/*.def Documentation/*.php Documentation/generate.sh \
 %find_lang %{name}
 
 
-%clean
-rm -rf %{buildroot}
-
-
 %files -f %{name}.lang
-%defattr(-,root,root,-)
 %{_bindir}/%{name}
 %{_datadir}/%{name}
 %doc AUTHORS ChangeLog COPYING TODO Documentation/*
 
 
 %changelog
+* Fri Feb 10 2012 Julian Sikorski <belegdol@fedoraproject.org> - 0.9.19-0.1
+- Updated to 0.9.19-WIP
+- Dropped obsolete Group, Buildroot, %%clean and %%defattr
+- Updated %%description
+
 * Thu Feb 09 2012 Nicolas Chauvet <kwizart@gmail.com> - 0.9.18-0.2
 - Rebuilt for https://fedoraproject.org/wiki/Fedora_17_Mass_Rebuild
 
