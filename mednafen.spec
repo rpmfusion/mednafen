@@ -1,5 +1,5 @@
 Name:           mednafen
-Version:        0.9.19
+Version:        0.9.21
 Release:        0.1%{?dist}
 Summary:        A multi-system emulator utilizing OpenGL and SDL
 #mednafen is a monstrosity build out of many emulators hence the colourful licensing
@@ -7,7 +7,6 @@ License:        GPLv2+ and BSD and ISC and LGPLv2+ and MIT and zlib
 URL:            http://mednafen.sourceforge.net
 #Get it here: http://forum.fobby.net/index.php?t=thread&frm_id=4
 Source0:        %{name}-%{version}-wip.tar.bz2
-Patch0:         %{name}-%{version}-gcc47.patch
 BuildRequires:  gettext
 BuildRequires:  pkgconfig >= 0.9.0
 BuildRequires:  SDL_net-devel >= 1.2.0
@@ -46,7 +45,6 @@ reasons.
 
 %prep
 %setup -q -n %{name}
-%patch0 -p1 -b .gcc47
 
 # Permission cleanups for debuginfo
 find \( -name \*.c\* -or -name \*.h\* \) -exec chmod -x {} \;
@@ -75,6 +73,10 @@ rm -rf Documentation/*.def Documentation/*.php Documentation/generate.sh \
 
 
 %changelog
+* Wed May 02 2012 Julian Sikorski <belegdol@fedoraproject.org> - 0.9.21-0.1
+- Updated to 0.9.21-WIP
+- Dropped upstreamed gcc-47 patch
+
 * Fri Feb 10 2012 Julian Sikorski <belegdol@fedoraproject.org> - 0.9.19-0.1
 - Updated to 0.9.19-WIP
 - Dropped obsolete Group, Buildroot, %%clean and %%defattr
