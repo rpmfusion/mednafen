@@ -1,6 +1,6 @@
 Name:           mednafen
-Version:        0.9.33.3
-Release:        2%{?dist}
+Version:        0.9.38.5
+Release:        1%{?dist}
 Summary:        A multi-system emulator utilizing OpenGL and SDL
 #mednafen is a monstrosity build out of many emulators hence the colourful licensing
 License:        GPLv2+ and BSD and ISC and LGPLv2+ and MIT and zlib 
@@ -19,20 +19,19 @@ BuildRequires:  jack-audio-connection-kit-devel
 A portable command-line driven, multi-system emulator which uses OpenGL and
 SDL. It emulates the following:
 * Atari Lynx
-* Famicom
+* Neo Geo Pocket (Color)
+* WonderSwan
 * GameBoy (Color)
 * GameBoy Advance
-* Neo Geo Pocket (Color)
-* NES (NTSC & PAL)
-* PC Engine
-* TurboGrafx 16 (CD)
+* Nintendo Entertainment System
+* Super Nintendo Entertainment System/Super Famicom
+* Virtual Boy
+* PC Engine/TurboGrafx 16 (CD)
 * SuperGrafx
 * PC-FX
-* WonderSwan (Color)
+* Sega Game Gear
+* Sega Genesis/Megadrive
 * Sega Master System
-* Sega Genesis
-* Nintendo Virtual Boy
-* Super NES
 * Sony PlayStation
 Mednafen has the ability to remap hotkey functions and virtual system
 inputs to a keyboard, a joystick or both simultaneously. Save states are
@@ -72,6 +71,9 @@ rm -rf Documentation/*.def Documentation/*.php Documentation/generate.sh \
 
 
 %changelog
+* Tue Jul 14 2015 Julian Sikorski <belegdol@fedoraproject.org> - 0.9.38.5-1
+- Updated to 0.9.38.5
+
 * Mon Sep 01 2014 Sérgio Basto <sergio@serjux.com> - 0.9.33.3-2
 - Rebuilt for https://fedoraproject.org/wiki/Fedora_21_22_Mass_Rebuild
 
