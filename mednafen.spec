@@ -1,5 +1,5 @@
 Name:           mednafen
-Version:        0.9.38.5
+Version:        0.9.38.6
 Release:        1%{?dist}
 Summary:        A multi-system emulator utilizing OpenGL and SDL
 #mednafen is a monstrosity build out of many emulators hence the colourful licensing
@@ -71,6 +71,9 @@ rm -rf Documentation/*.def Documentation/*.php Documentation/generate.sh \
 
 
 %changelog
+* Sun Sep 27 2015 Julian Sikorski <belegdol@fedoraproject.org> - 0.9.38.6-1
+- Updated to 0.9.38.6
+
 * Tue Jul 14 2015 Julian Sikorski <belegdol@fedoraproject.org> - 0.9.38.5-1
 - Updated to 0.9.38.5
 
