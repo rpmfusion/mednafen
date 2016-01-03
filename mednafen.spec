@@ -5,7 +5,7 @@ Summary:        A multi-system emulator utilizing OpenGL and SDL
 #mednafen is a monstrosity build out of many emulators hence the colourful licensing
 License:        GPLv2+ and BSD and ISC and LGPLv2+ and MIT and zlib 
 URL:            http://mednafen.sourceforge.net
-Source0:        Source0: http://downloads.sourceforge.net/%{name}/%{name}-%{version}.tar.bz2
+Source0:        http://mednafen.fobby.net/releases/files/mednafen-%{version}.tar.bz2
 BuildRequires:  gettext
 BuildRequires:  pkgconfig >= 0.9.0
 BuildRequires:  SDL_net-devel >= 1.2.0
