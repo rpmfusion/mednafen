@@ -6,6 +6,7 @@ Summary:        A multi-system emulator utilizing OpenGL and SDL
 License:        GPLv2+ and BSD and ISC and LGPLv2+ and MIT and zlib 
 URL:            http://mednafen.sourceforge.net
 Source0:        http://mednafen.fobby.net/releases/files/mednafen-%{version}.tar.bz2
+Patch0:         patch_abs_fix.patch
 BuildRequires:  gettext
 BuildRequires:  pkgconfig >= 0.9.0
 BuildRequires:  SDL_net-devel >= 1.2.0
@@ -43,6 +44,7 @@ reasons.
 
 %prep
 %setup -q -n %{name}
+%patch -P0
 
 # Permission cleanups for debuginfo
 find \( -name \*.c\* -or -name \*.h\* \) -exec chmod -x {} \;
