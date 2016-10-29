@@ -1,24 +1,29 @@
 Name:           mednafen
-Version:        0.9.38.7
-Release:        2%{?dist}
+Version:        0.9.39.2
+Release:        1%{?dist}
 Summary:        A multi-system emulator utilizing OpenGL and SDL
 #mednafen is a monstrosity build out of many emulators hence the colourful licensing
 License:        GPLv2+ and BSD and ISC and LGPLv2+ and MIT and zlib 
-URL:            http://mednafen.sourceforge.net
-Source0:        http://mednafen.fobby.net/releases/files/mednafen-%{version}.tar.bz2
-Patch0:         patch_abs_fix.patch
+URL:            http://mednafen.fobby.net
+Source0:        http://mednafen.fobby.net/releases/files/%{name]-%{version}.tar.bz2
 BuildRequires:  gettext
-BuildRequires:  pkgconfig >= 0.9.0
-BuildRequires:  SDL_net-devel >= 1.2.0
-BuildRequires:  libsndfile-devel => 1.0.2
-BuildRequires:  libcdio-devel
-BuildRequires:  libGLU-devel
+BuildRequires:  SDL-devel >= 1.2.0
+BuildRequires:  pkgconfig(jack) => 1.0.2
+BuildRequires:  pkgconfig(sndfile) => 1.0.2
 BuildRequires:  zlib-devel
-BuildRequires:  jack-audio-connection-kit-devel
 
 %description
-A portable command-line driven, multi-system emulator which uses OpenGL and
-SDL. It emulates the following:
+A portable, utilizing OpenGL and SDL, argument(command-line)-driven multi-system
+emulator. Mednafen has the ability to remap hotkey functions and virtual system
+inputs to a keyboard, a joystick, or both simultaneously. Save states are
+supported, as is real-time game rewinding. Screen snapshots may be taken, in the
+PNG file format, at the press of a button. Mednafen can record audiovisual
+movies in the QuickTime file format, with several different lossless codecs
+supported.
+
+The following systems are supported(refer to the emulation module documentation
+for more details):
+
 * Atari Lynx
 * Neo Geo Pocket (Color)
 * WonderSwan
@@ -33,31 +38,29 @@ SDL. It emulates the following:
 * Sega Game Gear
 * Sega Genesis/Megadrive
 * Sega Master System
+* Sega Saturn (experimental, x86_64 only)
 * Sony PlayStation
-Mednafen has the ability to remap hotkey functions and virtual system
-inputs to a keyboard, a joystick or both simultaneously. Save states are
-supported, as is real-time game rewinding. Screen snapshots may be taken at the
-press of a button and are saved in the popular PNG file format. To play Atari
-Lynx games you will also need lynxboot.img which is not included for legal
-reasons.
+
+Due to the threaded model of emulation used in Mednafen, and limitations of SDL,
+a joystick is preferred over a keyboard to play games, as the joystick will have
+slightly less latency, although the latency differences may not be perceptible
+to most people. 
 
 
 %prep
 %setup -q -n %{name}
-%patch -P0
 
-# Permission cleanups for debuginfo
-find \( -name \*.c\* -or -name \*.h\* \) -exec chmod -x {} \;
+# Permission cleanup
+find \( -name \*.c\* -or -name \*.h\* -or -name \*.inc \) -exec chmod -x {} \;
 
 
 %build
 %configure --disable-rpath
-make %{?_smp_mflags}
+%make_build
 
 
 %install
-rm -rf %{buildroot}
-make install DESTDIR=%{buildroot}
+%make_install
 
 # Documentation cleanup
 rm -rf Documentation/*.def Documentation/*.php Documentation/generate.sh \
@@ -68,11 +71,16 @@ rm -rf Documentation/*.def Documentation/*.php Documentation/generate.sh \
 
 %files -f %{name}.lang
 %{_bindir}/%{name}
-%{_datadir}/%{name}
-%doc AUTHORS ChangeLog COPYING TODO Documentation/*
+%doc ChangeLog COPYING TODO Documentation/*
 
 
 %changelog
+* Sat Oct 29 2016 Julian Sikorski <belegdol@fedoraproject.org> - 0.9.39.2-1
+- Updated to 0.9.39.2
+- Updated %%description
+- Dropped gcc-6 fix
+- Cleaned up the .spec file
+
 * Mon Jul 04 2016 Sérgio Basto <sergio@serjux.com> - 0.9.38.7-2
 - Fix error compiling with GCC 6.x on Fedora 24
 
