@@ -1,3 +1,5 @@
+%undefine _hardened_build
+
 Name:           mednafen
 Version:        0.9.39.2
 Release:        1%{?dist}
@@ -55,6 +57,12 @@ find \( -name \*.c\* -or -name \*.h\* -or -name \*.inc \) -exec chmod -x {} \;
 
 
 %build
+CFLAGS="$RPM_OPT_FLAGS -Wl,-z,relro -Wl,-z,now"
+CXXFLAGS="$RPM_OPT_FLAGS -Wl,-z,relro -Wl,-z,now"
+
+export CFLAGS
+export CXXFLAGS
+
 %configure --disable-rpath
 %make_build
 
@@ -80,6 +88,7 @@ rm -rf Documentation/*.def Documentation/*.php Documentation/generate.sh \
 - Updated %%description
 - Dropped gcc-6 fix
 - Cleaned up the .spec file
+- Disabled hardened build, see types.h
 
 * Mon Jul 04 2016 Sérgio Basto <sergio@serjux.com> - 0.9.38.7-2
 - Fix error compiling with GCC 6.x on Fedora 24
