@@ -1,13 +1,13 @@
 %undefine _hardened_build
 
 Name:           mednafen
-Version:        0.9.39.2
+Version:        0.9.43
 Release:        1%{?dist}
 Summary:        A multi-system emulator utilizing OpenGL and SDL
 #mednafen is a monstrosity build out of many emulators hence the colourful licensing
 License:        GPLv2+ and BSD and ISC and LGPLv2+ and MIT and zlib 
 URL:            http://mednafen.fobby.net
-Source0:        http://mednafen.fobby.net/releases/files/%{name}-%{version}.tar.bz2
+Source0:        http://mednafen.fobby.net/releases/files/%{name}-%{version}.tar.xz
 BuildRequires:  gettext
 BuildRequires:  SDL-devel >= 1.2.0
 BuildRequires:  pkgconfig(jack) => 1.0.2
@@ -83,6 +83,9 @@ rm -rf Documentation/*.def Documentation/*.php Documentation/generate.sh \
 
 
 %changelog
+* Sun Apr 02 2017 Julian Sikorski <belegdol@fedoraproject.org> - 0.9.43-1
+- Updated to 0.9.43
+
 * Sat Oct 29 2016 Julian Sikorski <belegdol@fedoraproject.org> - 0.9.39.2-1
 - Updated to 0.9.39.2
 - Updated %%description
