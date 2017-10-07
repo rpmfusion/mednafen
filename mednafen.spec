@@ -1,7 +1,7 @@
 %undefine _hardened_build
 
 Name:           mednafen
-Version:        0.9.47
+Version:        0.9.48
 Release:        1%{?dist}
 Summary:        A multi-system emulator utilizing OpenGL and SDL
 #mednafen is a monstrosity build out of many emulators hence the colourful licensing
@@ -83,6 +83,9 @@ rm -rf Documentation/*.def Documentation/*.php Documentation/generate.sh \
 
 
 %changelog
+* Sat Oct 07 2017 Julian Sikorski <belegdol@fedoraproject.org> - 0.9.48-1
+- Updated to 0.9.48
+
 * Thu Sep 07 2017 Julian Sikorski <belegdol@fedoraproject.org> - 0.9.47-1
 - Updated to 0.9.47
 
