@@ -2,7 +2,7 @@
 
 Name:           mednafen
 Version:        0.9.48
-Release:        1%{?dist}
+Release:        2%{?dist}
 Summary:        A multi-system emulator utilizing OpenGL and SDL
 #mednafen is a monstrosity build out of many emulators hence the colourful licensing
 License:        GPLv2+ and BSD and ISC and LGPLv2+ and MIT and zlib 
@@ -83,6 +83,9 @@ rm -rf Documentation/*.def Documentation/*.php Documentation/generate.sh \
 
 
 %changelog
+* Fri Mar 02 2018 RPM Fusion Release Engineering <leigh123linux@googlemail.com> - 0.9.48-2
+- Rebuilt for https://fedoraproject.org/wiki/Fedora_28_Mass_Rebuild
+
 * Sat Oct 07 2017 Julian Sikorski <belegdol@fedoraproject.org> - 0.9.48-1
 - Updated to 0.9.48
 
