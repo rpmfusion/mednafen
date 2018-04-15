@@ -1,18 +1,22 @@
 %undefine _hardened_build
 
 Name:           mednafen
-Version:        0.9.48
-Release:        2%{?dist}
+Version:        1.21.2
+Release:        1%{?dist}
 Summary:        A multi-system emulator utilizing OpenGL and SDL
 #mednafen is a monstrosity build out of many emulators hence the colourful licensing
 License:        GPLv2+ and BSD and ISC and LGPLv2+ and MIT and zlib 
 URL:            https://mednafen.github.io/
 Source0:        https://mednafen.github.io/releases/files/%{name}-%{version}.tar.xz
 BuildRequires:  gettext
-BuildRequires:  SDL-devel >= 1.2.0
+#1.3.0 is required
+#BuildRequires:  libmpcdec-devel
+#2.09 is required
+#BuildRequires:  lzo-devel
 BuildRequires:  pkgconfig(jack) => 1.0.2
+BuildRequires:  pkgconfig(sdl2) => 2.0.5
 BuildRequires:  pkgconfig(sndfile) => 1.0.2
-BuildRequires:  zlib-devel
+BuildRequires:  pkgconfig(zlib)
 
 %description
 A portable, utilizing OpenGL and SDL, argument(command-line)-driven multi-system
@@ -64,6 +68,11 @@ export CFLAGS
 export CXXFLAGS
 
 %configure --disable-rpath
+#to be added once dependencies become available
+#    --with-external-lzo
+#    --with-external-mpcdec
+#    --with-external-tremor
+#    --with-external-trio
 %make_build
 
 
@@ -83,6 +92,11 @@ rm -rf Documentation/*.def Documentation/*.php Documentation/generate.sh \
 
 
 %changelog
+* Sun Apr 15 2018 Julian Sikorski <belegdol@fedoraproject.org> - 1.21.2-1
+- Updated to 1.21.2
+- Switched to SDL2
+- Added placeholders for system libs to be enabled once dependencies become available
+
 * Fri Mar 02 2018 RPM Fusion Release Engineering <leigh123linux@googlemail.com> - 0.9.48-2
 - Rebuilt for https://fedoraproject.org/wiki/Fedora_28_Mass_Rebuild
 
