@@ -2,7 +2,7 @@
 
 Name:           mednafen
 Version:        1.21.2
-Release:        1%{?dist}
+Release:        2%{?dist}
 Summary:        A multi-system emulator utilizing OpenGL and SDL
 #mednafen is a monstrosity build out of many emulators hence the colourful licensing
 License:        GPLv2+ and BSD and ISC and LGPLv2+ and MIT and zlib 
@@ -13,6 +13,7 @@ BuildRequires:  gettext
 #BuildRequires:  libmpcdec-devel
 #2.09 is required
 #BuildRequires:  lzo-devel
+BuildRequires:  pkgconfig(alsa)
 BuildRequires:  pkgconfig(jack) => 1.0.2
 BuildRequires:  pkgconfig(sdl2) => 2.0.5
 BuildRequires:  pkgconfig(sndfile) => 1.0.2
@@ -92,6 +93,9 @@ rm -rf Documentation/*.def Documentation/*.php Documentation/generate.sh \
 
 
 %changelog
+* Mon Apr 23 2018 Julian Sikorski <belegdol@fedoraproject.org> - 1.21.2-2
+- Added pkgconfig(alsa) to BuildRequires as it is no longer pulled implicitly
+
 * Sun Apr 15 2018 Julian Sikorski <belegdol@fedoraproject.org> - 1.21.2-1
 - Updated to 1.21.2
 - Switched to SDL2
