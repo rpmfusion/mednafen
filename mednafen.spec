@@ -55,7 +55,7 @@ to most people.
 
 
 %prep
-%setup -q -n %{name}
+%autosetup -n %{name}
 
 # Permission cleanup
 find \( -name \*.c\* -or -name \*.h\* -or -name \*.inc \) -exec chmod -x {} \;
@@ -88,8 +88,9 @@ rm -rf Documentation/*.def Documentation/*.php Documentation/generate.sh \
 
 
 %files -f %{name}.lang
+%license COPYING
+%doc ChangeLog TODO Documentation/*
 %{_bindir}/%{name}
-%doc ChangeLog COPYING TODO Documentation/*
 
 
 %changelog
